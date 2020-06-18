@@ -21,7 +21,7 @@ public class BankingSystem {
             System.out.println("1.Deposit");
             System.out.println("2.Check the balance");
             System.out.println("3.Withdrawal");
-            System.out.println("4.Previous transaction");
+            System.out.println("4.Transfer the money");
             System.out.println("5.Exit");
 
             option = sc.nextInt();
