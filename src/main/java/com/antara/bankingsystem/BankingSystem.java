@@ -1,5 +1,6 @@
 package com.antara.bankingsystem;
 
+
 import java.util.*;
 
 public class BankingSystem {
@@ -44,10 +45,8 @@ public class BankingSystem {
                 case 2:
                     System.out.println("Enter the customer name");
                     String customerUserName = sc.next();
-                    for (Map.Entry<String, Integer> entry : map.entrySet()) {
-                        System.out.println("customerUserName = " + entry.getKey() +
-                                ", Balance = " + entry.getValue());
-                    }
+                    System.out.println("Balance = " + map.get(customerUserName));
+
                     break;
                 case 3:
                     System.out.println("Enter the customer name");
@@ -61,8 +60,22 @@ public class BankingSystem {
                     }
                     break;
 
-            }
+                case 4:
+                    System.out.println("Enter your customer name");
+                    String customerName1 = sc.next();
+                    System.out.println("Enter the customer name you can to transfer");
+                    String customerName2 = sc.next();
+                    System.out.println("Enter the amount you want to transfer");
+                    int amountTransfer = sc.nextInt();
+                    if (map.containsKey(customerName2)) {
+                        map.put(customerName2, map.get(customerName2) + amountTransfer);
+                        map.put(customerName1, map.get(customerName1) - amountTransfer);
 
+                    } else {
+                        System.out.println("Sorry customer doesn't exists");
+                    }
+                    break;
+            }
 
         }
 
