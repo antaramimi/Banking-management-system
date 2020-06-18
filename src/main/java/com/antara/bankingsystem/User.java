@@ -6,6 +6,7 @@ public class User {
 
     String customerName;
     int customerId;
+    int customerpin;
 
     @Override
     public boolean equals(Object o) {
@@ -21,8 +22,33 @@ public class User {
         return Objects.hash(customerName, customerId);
     }
 
-    public User(String customerName) {
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
+
+    public int getCustomerpin() {
+        return customerpin;
+    }
+
+    public void setCustomerpin(int customerpin) {
+        this.customerpin = customerpin;
+    }
+
+    public User(String customerName, int customerpin) {
+        this.customerName = customerName;
+        this.customerpin = customerpin;
+    }
+
 }

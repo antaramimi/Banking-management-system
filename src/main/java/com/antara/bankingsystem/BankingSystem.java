@@ -4,6 +4,7 @@ import java.util.*;
 
 public class BankingSystem {
 
+    Map<String, User> userMap = new HashMap<>();
     Map<User, Integer> map = new HashMap<>();
 
     public static void main(String[] args) {
@@ -31,7 +32,10 @@ public class BankingSystem {
                 case 1:
                     System.out.println("Enter the customer name");
                     String customerName = sc.next();
-                    User user = new User(customerName);
+                    System.out.println("Enter the your pin");
+                    int customerpin = sc.nextInt();
+                    User user = new User(customerName, customerpin);
+                    userMap.put(customerName, user);
                     System.out.println("Enter an amount you want to deposit");
                     int amount = sc.nextInt();
                     if (map.containsKey(user)) {
@@ -44,28 +48,41 @@ public class BankingSystem {
                 case 2:
                     System.out.println("Enter the customer name");
                     String customerUserName = sc.next();
-                    User user5 = new User(customerUserName);
-                    System.out.println("Balance = " + map.get(user5));
+                    System.out.println("Enter the your pin");
+                    customerpin = sc.nextInt();
+                    User user5 = userMap.get(customerUserName);
+                    if (customerpin == (user5.getCustomerpin())) {
+                        System.out.println("Balance = " + map.get(user5));
+                    } else {
+                        System.out.println("Pin is incorrect");
+                    }
                     break;
                 case 3:
                     System.out.println("Enter the customer name");
                     customerName = sc.next();
-                    User user1 = new User(customerName);
-                    System.out.println("Enter the amount you like to withdraw");
-                    int amounts = sc.nextInt();
-                    if (map.containsKey(user1)) {
-                        map.put(user1, map.get(user1) - amounts);
-                    } else {
-                        System.out.println("No balance");
+                    System.out.println("Enter the your pin");
+                    customerpin = sc.nextInt();
+                    User user6 = userMap.get(customerName);
+                    if (customerpin==user6.getCustomerpin()) {
+                        User user1 = new User(customerName, customerpin);
+                        System.out.println("Enter the amount you like to withdraw");
+                        int amounts = sc.nextInt();
+                        if (map.containsKey(user1)) {
+                            map.put(user1, map.get(user1) - amounts);
+                        } else {
+                            System.out.println("No balance");
+                        }
                     }
                     break;
                 case 4:
                     System.out.println("Enter your customer name");
                     customerName = sc.next();
-                    User user3 = new User(customerName);
+                    System.out.println("Enter the your pin");
+                    customerpin = sc.nextInt();
+                    User user3 = new User(customerName, customerpin);
                     System.out.println("Enter the customer name you can to transfer");
                     String customerName2 = sc.next();
-                    User user4 = new User(customerName2);
+                    User user4 = new User(customerName2, customerpin);
                     System.out.println("Enter the amount you want to transfer");
                     int amountTransfer = sc.nextInt();
                     if (map.containsKey(user4)) {
